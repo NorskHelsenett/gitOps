@@ -9,7 +9,7 @@ steps:
 - name: clone
   image: alpine/git
   commands:
-  - git clone -c http.sslVerify=false https://git.local/gitea/gitOps-intro.git .
+  - git clone -c http.sslVerify=false https://git.local/gitea/gitOps.git .
   - git checkout $DRONE_COMMIT
 
 - name: publish
@@ -33,11 +33,11 @@ steps:
   commands:
   - git config --global user.name "DroneCI"
   - git config --global user.email "droneci@torden.tech"
-  - git clone https://jonasbg:$GIT_PAT@git.local/gitea/gitOps.git gitOps
+  - git clone https://gitea:$GIT_PAT@git.local/gitea/gitOps.git gitOps
   - cd gitOps
   - git switch main
   - echo "Image tag"
-  - export IMAGE_TAG="jonasbg/grimsgaard:${DRONE_COMMIT_SHA:0:7}"
+  - export IMAGE_TAG="git.local/gitea/nyancat:${DRONE_COMMIT_SHA:0:7}"
   - yq eval -i '.spec.template.spec.containers[0]."image"=env(IMAGE_TAG)' cluster/project/nyan/nyan.yml
   - git commit -am "IMAGE_TAG CHANGED $IMAGE_TAG"
   - git push

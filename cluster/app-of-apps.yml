@@ -9,8 +9,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: cluster/tooling/
-    repoURL: 'https://github.com/jonasbg/gitOps-intro.git'
-    targetRevision: static-site
+    repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
+    targetRevision: main
     directory:
       recurse: true
   project: default
