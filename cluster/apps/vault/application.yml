@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault
+  namespace: argocd
+spec:
+  destination:
+    namespace: vault
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: vault
+    helm:
+      values: |
+        injector:
+          enabled: true
+          replicas: 1
+        server:
+          enabled: true
+          logFormat: "json"
+          ingress:
+            enabled: true
+            annotations: |
+              cert-manager.io/cluster-issuer: self-signed
+            pathType: ImplementationSpecific
+            hosts:
+              - host: vault.local
+            tls:
+            - hosts:
+              - vault.local
+              secretName: tls-secret
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.23.0
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

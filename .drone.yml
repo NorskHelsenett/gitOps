@@ -1,0 +1,48 @@
+kind: pipeline
+name: default
+type: kubernetes
+
+clone:
+  disable: true
+
+steps:
+- name: clone
+  image: alpine/git
+  commands:
+  - git clone -c http.sslVerify=false https://git.local/gitea/gitOps-intro.git .
+  - git checkout $DRONE_COMMIT
+
+- name: publish
+  image: plugins/kaniko
+  settings:
+    username:
+      from_secret: registry_username
+    password:
+      from_secret: registry_password
+    registry: git.local
+    repo: git.local/gitea/nyancat
+    skip_tls_verify: true
+    tags: latest
+    context: src/
+    dockerfile: src/Dockerfile
+  depends_on:
+    - clone
+
+- name: deploy
+  image: jonasbg/yq
+  commands:
+  - git config --global user.name "DroneCI"
+  - git config --global user.email "droneci@torden.tech"
+  - git clone https://jonasbg:$GIT_PAT@git.local/gitea/gitOps.git gitOps
+  - cd gitOps
+  - git switch main
+  - echo "Image tag"
+  - export IMAGE_TAG="jonasbg/grimsgaard:${DRONE_COMMIT_SHA:0:7}"
+  - yq eval -i '.spec.template.spec.containers[0]."image"=env(IMAGE_TAG)' cluster/project/nyan/nyan.yml
+  - git commit -am "IMAGE_TAG CHANGED $IMAGE_TAG"
+  - git push
+  environment:
+    GIT_PAT:
+      from_secret: gitea_pat
+  depends_on:
+    - publish

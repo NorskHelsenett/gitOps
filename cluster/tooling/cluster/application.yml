@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - path: cluster/apps/
+      repoURL: 'https://github.com/jonasbg/gitOps-intro.git'
+      targetRevision: static-site
+      directory:
+        recurse: true
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

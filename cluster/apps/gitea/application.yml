@@ -1,0 +1,68 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: gitea
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: gitea
+spec:
+  project: default
+  source:
+    repoURL: 'https://dl.gitea.io/charts'
+    targetRevision: 7.0.4
+    helm:
+      valueFiles:
+        - values.yaml
+      values: |-
+        gitea:
+          config:
+            server:
+              ROOT_URL: "https://git.local"
+            repository:
+              ENABLE_PUSH_CREATE_USER: true
+            webhook:
+              ALLOWED_HOST_LIST: drone.local
+            database:
+              DB_TYPE: sqlite3
+          admin:
+            username: gitea
+            password: "gitops"
+        extraContainerVolumeMounts:
+          - mountPath: /etc/ssl/certs/ca.crt
+            name: domain-ca
+            readOnly: true
+            subPath: ca.crt
+        extraVolumes:
+          - secret:
+              secretName: gitea-tls-secret
+            name: domain-ca
+        memcached:
+          enabled: false
+        postgresql:
+          enabled: false
+        ingress:
+          enabled: true
+          annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: "0"
+            cert-manager.io/cluster-issuer: self-signed
+          tls:
+          - hosts:
+              - "git.local"
+            secretName: gitea-tls-secret
+          hosts:
+          - host: git.local
+            paths:
+            - path: /
+              pathType: Prefix
+    chart: gitea
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: gitea
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

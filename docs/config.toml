@@ -1,0 +1,57 @@
+baseURL = "www.example.com"
+languageCode = "nb-no"
+title = "gitOps introduksjon"
+theme = "hugo-whisper-theme"
+canonifyurls = true
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.55.0"
+
+# Controls how many words are printed in the content summary on the docs homepage.
+# See https://gohugo.io/content-management/summaries/
+summaryLength = 30
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Docs"
+    url = "/docs/"
+    weight = 2
+
+[params]
+  google_analytics_id=""
+  homepage_button_link = '/docs'
+  homepage_button_text = 'Kom i gang'
+  homepage_intro = 'Ta i bruk gitOps for å bygge profesjonelle løsninger, eller bare for å starte med noe hjemme.'
+  homepage_image = '/images/gitOps.png'
+
+  ## You can enable to add anchor links to header elements
+  # enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "Dette er en dokumentasjon for hvordan komme i gang meed gitOps"
+    meta_og_title = "Norsk helsenett"
+    meta_og_type = "website"
+    meta_og_url = "https://nhn.no"
+    meta_og_image = "https://www.nhn.no/_/image/995b7052-73af-4cb4-8960-7eb7bd12198d:cd6d3e0e98917056c843006683eaa68355d5777f/width-720/3.svg"
+    meta_og_description = "Norsk helsenett presenterer hvordan komme i gang med gitOps"
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@zerostaticio"
+    meta_twitter_creator = "@zerostaticio"
+
+  [params.logo]
+      mobile = "/images/logo-mobile.svg"
+      standard  = "/images/logo.svg"
+
+[author]
+  name = "Jonas Bo Grimsgaard"
+  homepage = "https://jonas.grimsgaard.dev"

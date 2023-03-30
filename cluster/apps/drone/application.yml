@@ -1,0 +1,101 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: drone
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: drone
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: drone
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.drone.io'
+    targetRevision: 0.6.4
+    helm:
+      values: |-
+        env:
+          DRONE_SERVER_HOST: drone.local
+          DRONE_GITEA_CLIENT_ID:
+          DRONE_GITEA_CLIENT_SECRET:
+          DRONE_GITEA_SERVER: https://git.local
+          DRONE_RPC_SECRET: ad562ccad33c0f98de659f6fb2efc36c
+          DRONE_SERVER_PROTO: https
+          DRONE_USER_CREATE: "username:gitea,admin:true"
+        extraVolumes:
+        - secret:
+            secretName: drone-tls-secret
+          name: domain-ca
+        extraVolumeMounts:
+        - mountPath: /etc/ssl/certs/ca.crt
+          name: domain-ca
+          readOnly: true
+          subPath: ca.crt
+        ingress:
+          enabled: true
+          annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: "0"
+            cert-manager.io/cluster-issuer: self-signed
+          tls:
+          - hosts:
+              - "drone.local"
+            secretName: drone-tls-secret
+          hosts:
+          - host: drone.local
+            paths:
+              - path: /
+                pathType: Prefix
+    chart: drone
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: drone
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: drone-runner
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: drone-runner
+    app.kubernetes.io/component: runner
+    app.kubernetes.io/part-of: drone
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.drone.io'
+    targetRevision: 0.1.10
+    helm:
+      values: |-
+        env:
+          DRONE_NAMESPACE_DEFAULT: drone
+          DRONE_RPC_HOST: drone.local
+          DRONE_RPC_PROTO: https
+          DRONE_RPC_SECRET: ad562ccad33c0f98de659f6fb2efc36c
+        rbac:
+          buildNamespaces:
+            - drone
+        extraVolumes:
+        - secret:
+            secretName: drone-tls-secret
+          name: domain-ca
+        extraVolumeMounts:
+        - mountPath: /etc/ssl/certs/ca.crt
+          name: domain-ca
+          readOnly: true
+          subPath: ca.crt
+    chart: drone-runner-kube
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: drone
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
