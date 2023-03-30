@@ -11,7 +11,7 @@ Dette fungerer ikke fordi i manifestet sier vi at image skal hentes fra [git.loc
 
 ## 1. Migrer fra Github
 Gå til https://git.local og vel `New Migration`, velg GitHub og migrer fra `
-https://github.com/jonasbg/gitOps-intro.git`
+https://github.com/NorskHelsenett/gitOps.git`
   - avhuk `This repository will be a mirror` om du ønsker kontinuerlige oppdateringer synkronisert fra github og til gitea.
 
 ![Gitea Migrering](gitea-migrate.png)
