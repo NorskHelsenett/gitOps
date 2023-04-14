@@ -15,13 +15,23 @@ DroneCI er et byggelinje verktøy for å bygge applikasjoner etter definisjoner.
 
 Disse to spiller på lag, slik at hver commit til Gitea starter et bygg i DroneCI.
 
-Når du nå åpner ArgoCD i nettleseren vil du se en app som heter `app-of-apps` og som er ute av sync. Hvis du så trykker på synkroniser vil du se at den oppretter en Gitea, Drone server og Drone runner instans for oss.
+Når du nå åpner ArgoCD i nettleseren vil du se en app som heter `cluster` og som er ute av sync. Hvis du så trykker på synkroniser vil du se at den oppretter en Gitea, Drone server og Drone runner instans for oss.
 
 
 ```bash
 brukernavn: gitea
 passord: gitops
 ```
+
+## Importer (fork) GitHub repoet
+
+![Alt text](clone-github-repo.png)
+
+![Alt text](gitea-migrate-git.png)
+
+![Alt text](gitea-migrate-choose.png)
+
+![Alt text](gitea-migrate-import-window.png)
 
 ### Lag OAuth2 applikasjon i Gitea
 
@@ -51,5 +61,11 @@ Gå til [Drone.local](https://drone.local) for å logge inn. Du vil nå bli send
 Når du nå synkroniserer prosjektet vil ArgoCD installere DroneCI server og runner.
 
 ![Synkroniser](drone-sync.png)
+
+aktiver
+
+legg in PAT `gitea_pat`
+`registry_username`
+`registry_password`
 
 ![Drone Dashboard](drone-dashboard.png)

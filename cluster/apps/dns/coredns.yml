@@ -15,8 +15,8 @@ data:
           fallthrough in-addr.arpa ip6.arpa
         }
         hosts {
-          192.168.65.9 git.local
-          192.168.65.9 drone.local
+          10.0.1.1 git.local
+          10.0.1.1 drone.local
           fallthrough
         }
         prometheus :9153

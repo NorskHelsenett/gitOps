@@ -29,8 +29,14 @@ mkdir ~/.kube
 sudo chown -f -R $USER ~/.kube
 newgrp microk8s
 
-microk8s enable ingress dns cert-manager hostpath-storage
+microk8s enable ingress dns cert-manager hostpath-storage host-access
 ```
+
+- **ingress:** asdf
+- **dns:** asdf
+- **cert-manager:** asdf
+- **hostpath-storage:** asdf
+- **host-access:** asdf
 
 For å få argocd ingressen til å fungere må nginx kjøres med `--enable-ssl-passthrough`. Dette patches ved følgende kommando.
 
@@ -44,8 +50,8 @@ Kjør følgende kommando og legg resultatet i `hosts` filen på egen maskin og m
 
 **Det er viktig at du gjør dette på multipass VM instansen din. Og dessverre vil denne filen resettes etter hver restart av maskinen**
 ```shell
-IP=$(hostname -I | awk '{print $1}')
-cat << EOF
+IP=$(hostname -I | awk '{print $1}' )
+cat << EOF | sudo tee -a /etc/hosts
   $IP git.local
   $IP drone.local
   $IP nyan.local
@@ -70,6 +76,10 @@ EOF
 source ~/.bashrc
 ```
 
+Installere JQ
+```shell
+sudo apt install jq -y
+```
 
 Sjekk noder og pod tilstander
 ```shell

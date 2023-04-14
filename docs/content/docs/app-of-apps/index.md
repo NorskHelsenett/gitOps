@@ -20,6 +20,12 @@ app-of-apps   Synced        Healthy
 cluster       OutOfSync     Healthy
 ```
 
+## DNS
+
+```shell
+kubectl rollout restart deployment coredns -n kube-system
+```
+
 ## Aksessere ArgoCD
 
 Før du kan gå til ArgoCD nettsiden må du installere root sertifikatet som lages av `app-of-apps`.
