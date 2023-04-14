@@ -48,13 +48,14 @@ Kopier `Client ID` og `Client Secret` og bruk de som override i ArgoCD for Drone
 
 ![Input DroneCI - gitea client-id and Client-Secret](argocd-drone-secret.png)
 
-![Authorize DroneCI](gitea-authorize.png)
 # DroneCI
 
 ## Overskriv parametere
+Gå til [Drone.local](https://drone.local) for å logge inn.
 
-Gå til [Drone.local](https://drone.local) for å logge inn. Du vil nå bli sendt til Gitea for autentisering før du kommer tilbake til DroneCI for registrering. `gitea` brukeren er allerede registert som admin i DroneCI fra JWT token til Gitea, så her kan du skrive hva som helst i feltene
 ![Velkommen](drone-welcome.png)
+
+Du vil nå bli sendt til Gitea for autentisering før du kommer tilbake til DroneCI for registrering. `gitea` brukeren er allerede registert som admin i DroneCI fra JWT token til Gitea, så her kan du skrive hva som helst i feltene
 
 ![DroneCI Registrering](drone-register.png)
 
@@ -62,10 +63,17 @@ Når du nå synkroniserer prosjektet vil ArgoCD installere DroneCI server og run
 
 ![Synkroniser](drone-sync.png)
 
-aktiver
+*Hvis det fortsatt er tomt, sørg for at `Active Only` ikke skrudd på*.
 
-legg in PAT `gitea_pat`
-`registry_username`
-`registry_password`
+Aktiver repoet, og legg inn i disse to hemmelighetene:
+
+Variabel | Verdi
+---|--:
+registry_username | gitea
+registry_password | gitops
+
+![Drone Secret](drone-secret.png)
+
+Nå er det klart for å starte et nytt bygg.
 
 ![Drone Dashboard](drone-dashboard.png)
