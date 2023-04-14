@@ -22,6 +22,8 @@ cluster       OutOfSync     Healthy
 
 ## DNS
 
+Etter at `app-of-apps` er ferdig synkronisert har vi gjort endringer på DNS, derfor må vi restarte DNS poden for at den skal plukke opp disse endringene.
+
 ```shell
 kubectl rollout restart deployment coredns -n kube-system
 ```
