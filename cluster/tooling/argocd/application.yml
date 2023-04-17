@@ -14,7 +14,7 @@ spec:
       targetRevision: main
     - path: cluster/project/argocd-patch
       repoURL: https://github.com/NorskHelsenett/gitOps.git
-      targetRevision: main
+      targetRevision: refactor
   syncPolicy:
     automated:
       prune: true
