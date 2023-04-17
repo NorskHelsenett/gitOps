@@ -12,7 +12,7 @@ spec:
     namespace: nyan
     server: 'https://kubernetes.default.svc'
   source:
-    path: cluster/project/nyan/
+    path: cluster/project/nyan
     repoURL: 'https://git.local/gitea/gitOps.git'
     targetRevision: main
     directory:
