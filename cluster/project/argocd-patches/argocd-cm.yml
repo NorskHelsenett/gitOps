@@ -1,4 +1,9 @@
 # kubectl patch configmap argocd-cm -n argocd --patch-file argocd-cm-patch.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
 data:
   application.instanceLabelKey: argocd.argoproj.io/instance
   oidc.config: |

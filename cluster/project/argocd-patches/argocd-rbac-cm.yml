@@ -1,4 +1,9 @@
-# kubectl patch configmap argocd-rbac-cm -n argocd --patch-file argocd-rbac-cm-patch.yml
+# # kubectl patch configmap argocd-rbac-cm -n argocd --patch-file argocd-rbac-cm-patch.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
 data:
   policy.csv: |
     # let members with group someProjectGroup handle apps in someProject

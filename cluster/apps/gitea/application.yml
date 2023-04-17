@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://dl.gitea.io/charts'
-    targetRevision: 7.0.4
+    targetRevision: 8.x
     helm:
       valueFiles:
         - values.yaml
