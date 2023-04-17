@@ -21,7 +21,7 @@ For å installere multipass følg den offisielle installasjons guiden på [insta
 ```shell
 multipass launch --name microk8s-vm --memory 4G --disk 40G
 multipass shell microk8s-vm
-sudo snap install microk8s --classic --channel=1.26/stable
+sudo snap install microk8s --classic --channel=1.27/stable
 sudo iptables -P FORWARD ACCEPT
 
 sudo usermod -a -G microk8s $USER
