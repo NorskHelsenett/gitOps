@@ -9,15 +9,13 @@ metadata:
     app.kubernetes.io/part-of: drone
 spec:
   project: default
-  source:
-    repoURL: 'https://charts.drone.io'
+  sources:
+  - repoURL: 'https://charts.drone.io'
     targetRevision: 0.6.4
     helm:
       values: |-
         env:
           DRONE_SERVER_HOST: drone.local
-          DRONE_GITEA_CLIENT_ID:
-          DRONE_GITEA_CLIENT_SECRET:
           DRONE_GITEA_SERVER: https://git.local
           DRONE_RPC_SECRET: ad562ccad33c0f98de659f6fb2efc36c
           DRONE_SERVER_PROTO: https
@@ -46,6 +44,9 @@ spec:
               - path: /
                 pathType: Prefix
     chart: drone
+  - path: cluster/project/drone
+    repoURL: 'https://git.local/gitea/gitOps.git'
+    targetRevision: main
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: drone
