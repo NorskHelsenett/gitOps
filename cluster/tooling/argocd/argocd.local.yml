@@ -13,7 +13,7 @@ spec:
   sources:
     - path: cluster/project/argocd
       repoURL: https://git.local/gitea/gitOps.git
-      targetRevision: refactor
+      targetRevision: main
   syncPolicy:
     automated:
       prune: true
