@@ -7,6 +7,7 @@ metadata:
     app.kubernetes.io/name: drone
     app.kubernetes.io/component: server
     app.kubernetes.io/part-of: drone
+    app.kubernetes.io/part-of: apps
 spec:
   project: default
   sources:

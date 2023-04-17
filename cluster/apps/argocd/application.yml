@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: argocd-patch
   namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: tooling
 spec:
   destination:
     namespace: argocd
