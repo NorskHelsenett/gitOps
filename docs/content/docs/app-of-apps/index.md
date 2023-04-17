@@ -32,7 +32,7 @@ kubectl rollout restart deployment coredns -n kube-system
 
 Før du kan gå til ArgoCD nettsiden må du installere root sertifikatet som lages av `app-of-apps`.
 
-Dette gjør du ved å følge stegene på [Sertifikater](/sertifikat)
+Dette gjør du ved å følge stegene på [Sertifikater](../sertifikat)
 
 1. Installer root sertifikatet på egen maskin
 2. Legg til `ip` og `hostname` i `hosts` filen på egen maskin
