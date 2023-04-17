@@ -24,6 +24,8 @@ spec:
         - secret:
             secretName: drone-tls-secret
           name: domain-ca
+        extraSecretNamesForEnvFrom:
+        - drone-secrets
         extraVolumeMounts:
         - mountPath: /etc/ssl/certs/ca.crt
           name: domain-ca
