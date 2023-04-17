@@ -16,8 +16,13 @@ Følg med på progresjonen ved å kjøre `kubectl get apps -n argocd`. Når app-
 kubectl get apps -n argocd
 
 NAME          SYNC STATUS   HEALTH STATUS
-app-of-apps   Synced        Healthy
-cluster       OutOfSync     Healthy
+app-of-apps    Synced        Healthy
+tooling        Synced        Healthy
+argocd-sso     Synced        Healthy
+drone-runner   Synced        Healthy
+drone          Synced        Healthy
+nyan           OutOfSync     Missing
+gitea          Synced        Healthy
 ```
 
 ## DNS
