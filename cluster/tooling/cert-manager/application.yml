@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - path: cluster/apps/cert-manager
+    - path: cluster/project/cert-manager
       repoURL: https://github.com/NorskHelsenett/gitOps.git
       targetRevision: refactor
   syncPolicy:
