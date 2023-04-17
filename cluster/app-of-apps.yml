@@ -8,11 +8,11 @@ spec:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   sources:
-    - path: cluster/tooling/
-      repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
-      targetRevision: refactor
-      directory:
-        recurse: true
+  - path: cluster/tooling/
+    repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
+    targetRevision: refactor
+    directory:
+      recurse: true
   project: default
   syncPolicy:
     automated:
