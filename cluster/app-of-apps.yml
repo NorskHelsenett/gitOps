@@ -13,7 +13,6 @@ spec:
       targetRevision: refactor
       directory:
         recurse: true
-    - path: cluster/
   project: default
   syncPolicy:
     automated:
