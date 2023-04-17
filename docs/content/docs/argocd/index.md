@@ -19,7 +19,22 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 > 👋  **Ta deg en kopp kaffe**: Nå må vi vente til ArgoCD har fått spunnet opp før vi kan hente admin passordet!
 
 ### Hent admin passord
+> ℹ️ Admin passordet er den enkleste måten å få tilgang til ArgoCD UI på, men følg gjerne SSO anvisningen under for å få skrudd på det istedenfor.
+
 Gjenta denne kommandoen frem til passordet vises, i mellomtiden er den tom.
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" 2> /dev/null | base64 -d && echo
 ```
+## Single-sing-on (SSO) mot Gitea
+> ℹ️ Gjør dette etter at Gitea er satt opp
+
+1. Opprett ny OAUTH2 applikasjon i Gitea
+- **Application Name:** ArgoCD
+- **Redirect URI:**
+```shell
+https://argocd.local/auth/callback
+```
+
+2. Endre `clientID` `clientSecret` i `cluster/project/argocd-patches/argocd-cm.yaml`
+
+4. Push til gitea repoet og kjør sync fra ArgoCD

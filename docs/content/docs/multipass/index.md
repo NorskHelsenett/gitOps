@@ -21,7 +21,7 @@ For å installere multipass følg den offisielle installasjons guiden på [insta
 ```shell
 multipass launch --name microk8s-vm --memory 4G --disk 40G
 multipass shell microk8s-vm
-sudo snap install microk8s --classic --channel=1.26/stable
+sudo snap install microk8s --classic --channel=1.27/stable
 sudo iptables -P FORWARD ACCEPT
 
 sudo usermod -a -G microk8s $USER
@@ -29,8 +29,14 @@ mkdir ~/.kube
 sudo chown -f -R $USER ~/.kube
 newgrp microk8s
 
-microk8s enable ingress dns cert-manager hostpath-storage
+microk8s enable ingress dns cert-manager hostpath-storage host-access
 ```
+
+- **ingress:** Dette oppretter en ingress (reverse-proxy) som videresender trafikk for et FQDN (example.com) til tilhørende service som så svarer på responsen.
+- **dns:** Dette oppretter en DNS tilbyder i klusteret så vi kan kalle på tjenestene ved å bruke FQDN til klusteret (example.svc.cluster.local)
+- **cert-manager:** Cert-manager er en tilbyder for å utstede sertifikater, enten selvsignerte eller gjennom eksterne tjenester som Let's Encrypt
+- **hostpath-storage:** Dette er en enkel tilbyder for å tilby lagring inn i noden ved å lagre data på selve ubuntu hosten.
+- **host-access:** _🚨MERK!🚨_ Ikke bruk `host-access` i vanlige klustre uten å ha gjort en skikkelig vurdering. Vi brukes dette kun for å forenkle bruken av DNS oppslag mot [drone.local](https://drone.local) og [git.local](https://git.local) inne i klusteret.
 
 For å få argocd ingressen til å fungere må nginx kjøres med `--enable-ssl-passthrough`. Dette patches ved følgende kommando.
 
@@ -44,8 +50,8 @@ Kjør følgende kommando og legg resultatet i `hosts` filen på egen maskin og m
 
 **Det er viktig at du gjør dette på multipass VM instansen din. Og dessverre vil denne filen resettes etter hver restart av maskinen**
 ```shell
-IP=$(hostname -I | awk '{print $1}')
-cat << EOF
+IP=$(hostname -I | awk '{print $1}' )
+cat << EOF | sudo tee -a /etc/hosts
   $IP git.local
   $IP drone.local
   $IP nyan.local
@@ -70,6 +76,10 @@ EOF
 source ~/.bashrc
 ```
 
+Installere JQ
+```shell
+sudo apt install jq -y
+```
 
 Sjekk noder og pod tilstander
 ```shell

@@ -8,7 +8,7 @@ Siden vi jobber med gitOps skal vi nå gå mot et ekte git repo som grunnlag for
 
 Installer `app-of-apps` i klusteret
 ```bash
-kubectl apply -n argocd -f https://raw.githubusercontent.com/jonasbg/gitOps-intro/static-site/cluster/app-of-apps.yml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/NorskHelsenett/gitOps/main/cluster/app-of-apps.yml
 ```
 
 Følg med på progresjonen ved å kjøre `kubectl get apps -n argocd`. Når app-of-apps står som `Healthy` er det klart for å fortsette til neste steg.
@@ -18,6 +18,14 @@ kubectl get apps -n argocd
 NAME          SYNC STATUS   HEALTH STATUS
 app-of-apps   Synced        Healthy
 cluster       OutOfSync     Healthy
+```
+
+## DNS
+
+Etter at `app-of-apps` er ferdig synkronisert har vi gjort endringer på DNS, derfor må vi restarte DNS poden for at den skal plukke opp disse endringene.
+
+```shell
+kubectl rollout restart deployment coredns -n kube-system
 ```
 
 ## Aksessere ArgoCD
