@@ -14,6 +14,8 @@ spec:
     - path: cluster/tooling
       repoURL: https://github.com/NorskHelsenett/gitOps.git
       targetRevision: refactor
+      directory:
+        recurse: true
   syncPolicy:
     automated:
       prune: true
