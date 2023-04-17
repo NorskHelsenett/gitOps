@@ -46,7 +46,7 @@ spec:
     chart: drone
   - path: cluster/project/drone
     repoURL: 'https://git.local/gitea/gitOps.git'
-    targetRevision: main
+    targetRevision: refactor
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: drone
