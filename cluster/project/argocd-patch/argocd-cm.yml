@@ -9,8 +9,8 @@ data:
   oidc.config: |
     name: Gitea
     issuer: https://git.local/
-    clientID: #hent fra Gitea
-    clientSecret: #hent fra Gitea
+    clientID: #hent fra Gitea.local
+    clientSecret: #hent fra Gitea.local
     requestedScopes:
     - openid
     - profile
