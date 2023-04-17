@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: cluster/project/argocd-patch
-    repoURL: https://git.local/gitea/gitOps.git
+    repoURL: https://github.com/NorskHelsenett/gitOps.git
     targetRevision: main
   syncPolicy:
     automated:

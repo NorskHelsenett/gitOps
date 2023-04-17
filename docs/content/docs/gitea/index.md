@@ -25,6 +25,10 @@ passord: gitops
 
 ## Importer (fork) GitHub repoet
 
+```shell
+https://github.com/NorskHelsenett/gitOps.git
+```
+
 ![clone-github-repo](clone-github-repo.png)
 
 ![gitea-migrate-git](gitea-migrate-git.png)
