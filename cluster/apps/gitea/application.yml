@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: gitea
     app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: gitea
+    app.kubernetes.io/part-of: apps
 spec:
   project: default
   source:

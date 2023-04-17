@@ -38,3 +38,8 @@ https://argocd.local/auth/callback
 2. Endre `clientID` `clientSecret` i `cluster/project/argocd-patches/argocd-cm.yaml`
 
 4. Push til gitea repoet og kjør sync fra ArgoCD
+
+5. Restart ArgoCD deployment
+```shell
+kubectl rollout restart deployment argocd-server -n argocd
+```

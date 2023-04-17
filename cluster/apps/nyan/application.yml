@@ -6,14 +6,14 @@ metadata:
   labels:
     app.kubernetes.io/name: nyan
     app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: nyan
+    app.kubernetes.io/part-of: apps
 spec:
   destination:
     namespace: nyan
     server: 'https://kubernetes.default.svc'
   source:
-    path: cluster/project/nyan/
-    repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
+    path: cluster/project/nyan
+    repoURL: 'https://git.local/gitea/gitOps.git'
     targetRevision: main
     directory:
       recurse: true
