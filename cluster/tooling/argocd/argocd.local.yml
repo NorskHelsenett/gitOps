@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-patch
+  name: argocd-local
   namespace: argocd
   labels:
     app.kubernetes.io/part-of: tooling
@@ -11,13 +11,14 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - path: cluster/tooling/argocd
-      repoURL: https://github.com/NorskHelsenett/gitOps.git
+    - path: cluster/local/argocd
+      repoURL: https://git.local/gitea/gitOps.git
       targetRevision: refactor
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - ServerSideApply=true
-    - Validate=false
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - Validate=false
