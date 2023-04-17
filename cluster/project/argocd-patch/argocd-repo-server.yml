@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+spec:
+  template:
+    spec:
+      containers:
+      - name: argocd-repo-server
+        volumeMounts:
+        - mountPath: /etc/ssl/certs/ca.crt
+          name: cluster-ca
+          readOnly: true
+          subPath: ca.crt
+      volumes:
+      - secret:
+          secretName: argocd-secret-tls
+        name: cluster-ca

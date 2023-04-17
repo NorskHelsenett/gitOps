@@ -1,0 +1,16 @@
+# # kubectl patch configmap argocd-rbac-cm -n argocd --patch-file argocd-rbac-cm-patch.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.csv: |
+    # let members with group someProjectGroup handle apps in someProject
+    # this can also be defined in the UI in the group-definition to avoid doing it there in the configmap
+    p, someProjectGroup, applications, *, someProject/*, allow
+    # let the group membership argocd-admins from OIDC become role:admin - needs to go into the configmap
+    g, argocd-global-admins, role:admin
+  policy.default: role:admin
+  # essential to get argo to use groups for RBAC:
+  scopes: '[http://git.local, email]'
