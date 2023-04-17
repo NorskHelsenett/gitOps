@@ -13,7 +13,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: cluster/project/nyan/
-    repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
+    repoURL: 'https://git.local/gitea/gitOps.git'
     targetRevision: main
     directory:
       recurse: true

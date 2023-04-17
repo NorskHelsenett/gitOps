@@ -10,7 +10,7 @@ spec:
   sources:
     - path: cluster/tooling/
       repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
-      targetRevision: main
+      targetRevision: refactor
       directory:
         recurse: true
     - path: cluster/
