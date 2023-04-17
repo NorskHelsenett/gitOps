@@ -8,10 +8,13 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   project: default
-  source:
-    path: cluster/project/argocd
-    repoURL: https://git.local/gitea/gitOps.git
-    targetRevision: main
+  sources:
+    - path: cluster/project/argocd
+      repoURL: https://git.local/gitea/gitOps.git
+      targetRevision: main
+    - path: cluster/project/argocd-patch
+      repoURL: https://github.com/NorskHelsenett/gitOps.git
+      targetRevision: main
   syncPolicy:
     automated:
       prune: true
