@@ -8,7 +8,7 @@ Siden vi jobber med gitOps skal vi nå gå mot et ekte git repo som grunnlag for
 
 Installer `app-of-apps` i klusteret
 ```bash
-kubectl apply -n argocd -f https://raw.githubusercontent.com/jonasbg/gitOps-intro/static-site/cluster/app-of-apps.yml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/NorskHelsenett/gitOps/main/cluster/app-of-apps.yml
 ```
 
 Følg med på progresjonen ved å kjøre `kubectl get apps -n argocd`. Når app-of-apps står som `Healthy` er det klart for å fortsette til neste steg.
