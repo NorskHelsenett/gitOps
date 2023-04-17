@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - path: cluster/tooling/argocd
+    - path: cluster/local/argocd
       repoURL: https://git.local/gitea/gitOps.git
       targetRevision: refactor
   syncPolicy:
