@@ -25,13 +25,13 @@ passord: gitops
 
 ## Importer (fork) GitHub repoet
 
-![Alt text](clone-github-repo.png)
+![clone-github-repo](clone-github-repo.png)
 
-![Alt text](gitea-migrate-git.png)
+![gitea-migrate-git](gitea-migrate-git.png)
 
-![Alt text](gitea-migrate-choose.png)
+![gitea-migrate-choose](gitea-migrate-choose.png)
 
-![Alt text](gitea-migrate-import-window.png)
+![gitea-migrate-import-window](gitea-migrate-import-window.png)
 
 ### Lag OAuth2 applikasjon i Gitea
 

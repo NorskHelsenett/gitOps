@@ -209,5 +209,5 @@ kubectl get AdmissionReport -A
 #### ENV variabler
 ```shell
 SIGSTORE_ROOT_FILE=./CA.crts
-COSIGN_REPOSITORY=git.local/jonasbg/signatures
+COSIGN_REPOSITORY=git.local/gitea/signatures
 ```
