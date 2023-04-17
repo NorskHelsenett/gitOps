@@ -30,13 +30,11 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 1. Opprett ny OAUTH2 applikasjon i Gitea
 - **Application Name:** ArgoCD
-- **Redirect URI:** https://argocd.local/auth/callback
+- **Redirect URI:**
+```shell
+https://argocd.local/auth/callback
+```
 
 2. Endre `clientID` `clientSecret` i `cluster/project/argocd-patches/argocd-cm.yaml`
 
-3. Kjør følgende kommandoer fra rootmappen
-```shell
-kubectl patch configmap argocd-cm -n argocd --patch-file cluster/project/argocd-patch/argocd-cm-patch.yml
-kubectl patch configmap argocd-rbac-cm -n argocd --patch-file cluster/project/argocd-patch/argocd-rbac-cm-patch.yml
-kubectl patch deployment argocd-server -n argocd --patch-file cluster/project/argocd-patch/argocd-patch.yml
-```
+4. Push til gitea repoet og kjør sync fra ArgoCD
