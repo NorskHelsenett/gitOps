@@ -15,5 +15,6 @@ spec:
       recurse: true
   project: default
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
+    automated:
+      prune: false
+      selfHeal: true
