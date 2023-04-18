@@ -35,6 +35,7 @@ jobs:
     env:
       HUGO_VERSION: 0.108.0
     steps:
+      - uses: actions/checkout@v2
       - name: sanity check
         run: ls -lah && pwd
       - name: Set up Node.js ${{ matrix.node }}
