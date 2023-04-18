@@ -1,7 +1,7 @@
 baseURL = "www.example.com"
 languageCode = "nb-no"
 title = "gitOps introduksjon"
-theme = "hugo-whisper-theme"
+theme = "my-doks-site"
 canonifyurls = true
 
 pygmentsCodeFences = true
