@@ -54,7 +54,7 @@ jobs:
       #   run: npm test
 
       - name: Build production website
-        run: npm run build -- --baseURL "${{ steps.pages.outputs.base_url }}"
+        run: npm run build -- --baseURL "${{ steps.deployment.outputs.page_url }}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
