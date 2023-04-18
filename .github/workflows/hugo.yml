@@ -61,9 +61,6 @@ jobs:
         with:
           path: .docs/public
 
-#         --baseURL "${{ steps.pages.outputs.base_url }}/"
-
-  # Deployment job
   deploy:
     environment:
       name: github-pages

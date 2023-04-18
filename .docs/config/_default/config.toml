@@ -1,5 +1,5 @@
 baseurl = "https://norskhelsenett.github.io/gitOps/"
-canonifyURLs = false
+canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true
