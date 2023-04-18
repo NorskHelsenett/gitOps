@@ -25,6 +25,8 @@ concurrency:
 defaults:
   run:
     shell: bash
+    working-directory: .docs
+
 
 jobs:
   # Build job
@@ -41,19 +43,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: .docs
 
       - name: Check for linting errors
         run: npm test
-        working-directory: .docs
 
       - name: Build production website
         run: npm run build
-        working-directory: .docs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        working-directory: .docs
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
