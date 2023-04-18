@@ -47,7 +47,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: cd .docs && npm install
 
       - name: Check for linting errors
         run: npm test
