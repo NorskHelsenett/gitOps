@@ -48,7 +48,7 @@
   name = "Kom i gang"
   weight = 30
   identifier = "get-started"
-  url = "/docs/prologue/introduction/"
+  url = "/docs/gitops/intro/"
 
 [[main]]
   name = "Hurtigstart"

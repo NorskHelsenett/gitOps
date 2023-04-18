@@ -1,6 +1,7 @@
-baseurl = "https://norskhelsenett.github.io/gitOps/"
+baseurl = "localhost"
 canonifyURLs = true
 disableAliases = true
+title = "GitOps"
 disableHugoGeneratorInject = true
 enableEmoji = true
 enableGitInfo = true
