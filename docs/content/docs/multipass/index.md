@@ -36,15 +36,7 @@ microk8s enable ingress dns cert-manager hostpath-storage host-access
 - **dns:** Dette oppretter en DNS tilbyder i klusteret så vi kan kalle på tjenestene ved å bruke FQDN til klusteret (example.svc.cluster.local)
 - **cert-manager:** Cert-manager er en tilbyder for å utstede sertifikater, enten selvsignerte eller gjennom eksterne tjenester som Let's Encrypt
 - **hostpath-storage:** Dette er en enkel tilbyder for å tilby lagring inn i noden ved å lagre data på selve ubuntu hosten.
-- **host-access:** _🚨MERK!🚨_ Ikke bruk `host-access` i vanlige klustre uten å ha gjort en skikkelig vurdering. Vi brukes dette kun for å forenkle bruken av DNS oppslag mot [drone.local](https://drone.local) og [git.local](https://git.local) inne i klusteret.
-
-For å få argocd ingressen til å fungere må nginx kjøres med `--enable-ssl-passthrough`. Dette patches ved følgende kommando.
-
-```shell
-kubectl -n ingress patch daemonsets nginx-ingress-microk8s-controller \
---type=json \
--p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--enable-ssl-passthrough"}]'
-```
+- **host-access:** _🚨MERK!🚨_ Ikke bruk `host-access` i vanlige klustre uten å ha gjort en skikkelig vurdering. Vi bruker dette kun for å forenkle bruken av DNS oppslag mot [drone.local](https://drone.local) og [git.local](https://git.local) inne i klusteret.
 
 Kjør følgende kommando og legg resultatet i `hosts` filen på egen maskin og multipass. På MacOSX og Linux er den rette plasseringen `/etc/hosts`.
 

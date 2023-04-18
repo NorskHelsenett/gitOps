@@ -18,6 +18,14 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 
 > 👋  **Ta deg en kopp kaffe**: Nå må vi vente til ArgoCD har fått spunnet opp før vi kan hente admin passordet!
 
+For å få argocd ingressen til å fungere må nginx kjøres med `--enable-ssl-passthrough`. Dette patches ved følgende kommando.
+
+```shell
+kubectl -n ingress patch daemonsets nginx-ingress-microk8s-controller \
+--type=json \
+-p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--enable-ssl-passthrough"}]'
+```
+
 ### Hent admin passord
 > ℹ️ Admin passordet er den enkleste måten å få tilgang til ArgoCD UI på, men følg gjerne SSO anvisningen under for å få skrudd på det istedenfor.
 

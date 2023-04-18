@@ -18,6 +18,11 @@ Målet er å få https://nyan.local opp og kjøre. Hvis du prøver å gå til de
 Gå tilbake til ArgoCD og synkroniser applikasjonen,
 ![Sync Nyancat](argocd-sync-nyan-app.png)
 
+> ℹ️ Hvis du får feilmelding på nedlasting av image der ArgoCD klager på at den ikke finner IP for git.local/gitea/nyancat:latest er den enkleste måten å få til dette å eksternet pull images via `microk8s` for å side-loade image inn i klusteret. Et annet alternativ er å restarte VM for å få inn endringene fra `/etc/hosts` filen.
+```shell
+microk8s ctr images pull git.local/gitea/nyancat:latest
+```
+
 # SUKSESS
 
 ![Suksess](nyancat.gif)
