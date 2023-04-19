@@ -1,0 +1,41 @@
+---
+# Source: nyan/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nyan
+  annotations:
+    cert-manager.io/cluster-issuer: self-signed
+  labels:
+    app.kubernetes.io/name: nyan
+spec:
+  tls:
+    - hosts:
+        - "nyan.local"
+      secretName: nyan-secret
+  rules:
+    - host: "nyan.local"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: nyan
+                port:
+                  number: 80
+---
+# Source: nyan/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nyan
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: nyan
