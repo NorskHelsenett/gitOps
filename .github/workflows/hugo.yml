@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: new-docs
+          ref: main
       - name: sanity check
         run: ls -lah && pwd
       - name: Set up Node.js
