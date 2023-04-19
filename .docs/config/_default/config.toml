@@ -12,7 +12,7 @@ timeout = 300000
 
 # Multilingual
 defaultContentLanguage = "nb"
-disableLanguages = ["de", "nl"]
+disableLanguages = ["de", "nl", "en"]
 # defaultContentLanguageInSubdir = true
 
 # add redirects/headers

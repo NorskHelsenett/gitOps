@@ -9,7 +9,7 @@
 [nb]
   languageName = "Norsk"
   contentDir = "content/nb"
-  weight = 10
+  weight = 5
   [nb.params]
     languageISO = "NO"
     languageTag = "nb-NO"

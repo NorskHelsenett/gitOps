@@ -24,13 +24,15 @@ Siden gitOps jobber et pull metodikken, vil det si at det er klusteret som har t
 ### Oppsett
 I dette oppsett inngår følgende portefølje av produkter:
 
+![Oversikt over alle produktene i løsningen](gitops-intro-overview.png)
+
 Produkt | URL | Beskrivelse
 ---:|---|---
-ArgoCD | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) | gitOps operatoren vår, og verdens søteste logo.
+ArgoCD | [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) | gitOps operatoren vår, som vil lytte på et git repo og gjøre endringer mot klusteret
 Gitea | [Gitea](https://gitea.io/en-us/) | on-prem github alternativ
 DroneCI | [DroneCI](https://www.drone.io) | bygg agenter for bygging av artifakter og produkter
 Nyan | [NyanCat](https://github.com/cristurm/nyan-cat) | nyancat - brukes for å teste ingress, sertifikater og byggelinje
 Cert-Manager | [Cert-Manager](https://cert-manager.io) | brukes for å utstede selv signerte sertifikater
 NGINX | [NGINX](https://www.nginx.com) | ingress kontrolleren vår, på en måte en reverse-proxy
-Multipass |[ Multipass](http://multipass.run) | brukes for å opprette en lokal VM, på mange måter veldig likt WSL
+Multipass |[ Multipass](http://multipass.run) | brukes for å opprette en lokal VM, på mange måter veldig likt WSL2
 microk8s |[ microk8s](http://microk8s.io) | et produkt for å provisjonere et kubernetes kluster. Et av mange gode alternativer

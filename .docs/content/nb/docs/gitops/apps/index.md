@@ -46,4 +46,4 @@ Dette gjør du ved å følge stegene på [Sertifikater](../sertifikater)
 1. Installer root sertifikatet på egen maskin
 2. Legg til `ip` og `hostname` i `hosts` filen på egen maskin
 
-Når alle disse stegene er utført, vil du kunne nå argocd gjennom https://argocd.local.
+Når alle disse stegene er utført, vil du kunne nå argocd gjennom [https://argocd.local](https://argocd.local).
