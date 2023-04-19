@@ -32,7 +32,7 @@ steps:
   image: jonasbg/yq
   commands:
   - git config --global user.name "DroneCI"
-  - git config --global user.email "droneci@torden.tech"
+  - git config --global user.email "droneci@drone.local"
   - git clone https://gitea:$GIT_PAT@git.local/gitea/gitOps.git gitOps
   - cd gitOps
   - git switch main
@@ -43,6 +43,6 @@ steps:
   - git push
   environment:
     GIT_PAT:
-      from_secret: gitea_pat
+      from_secret: registry_password
   depends_on:
     - publish
