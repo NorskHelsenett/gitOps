@@ -37,7 +37,3 @@ microk8s ctr images pull git.local/gitea/nyancat:latest
 ```
 
 {{< alert text="Sideloading ferdig." />}}
-
-# SUKSESS
-
-![Suksess](nyancat.gif)

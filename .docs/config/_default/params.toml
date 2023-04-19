@@ -3,17 +3,17 @@
 ## Homepage
 title = "Norsk helsenett"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+titleAddition = "Kom i gang med gitOps"
+description = "Kom i gang med gitOps og lær hvordan du kan sette opp ditt eget kluster for utvikling, hjemmelabb etc med fokus på produksjonskvalitet."
 
 ## Documentation
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
-ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+images = ["docs/gitops/argocd/gitOps.png"]
+ogLocale = "nb_NO"
+domainTLD = "norskhelsenett.github.io/gitOps"
+titleHome = "NHN gitOps intro"
 
 ## Twitter Cards
 twitterSite = "@getdoks"
@@ -22,13 +22,13 @@ twitterCreator = "@henkverlinde"
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
+schemaName = "NHN gitOps"
+schemaAuthor = "Jonas Bo Grimsgaard"
 schemaAuthorTwitter = "https://infosec.exchange/@jbg"
 schemaAuthorLinkedIn = "https://www.linkedin.com/in/jonas-grimsgaard-08730360/"
 schemaAuthorGitHub = "https://github.com/norskhelsenett/gitops"
-schemaLocale = "en-US"
-schemaLogo = "logo-doks.png"
+schemaLocale = "nb_NO"
+schemaLogo = "favicon.ico"
 schemaLogoWidth = 512
 schemaLogoHeight = 512
 schemaImage = "doks.png"
@@ -68,7 +68,7 @@ fillImage = "1270x740 Center" # normalize image size
 footer = "Powered by <a class=\"text-muted\" href=\"https://www.github.com/\">GitHub</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://getdoks.org/\">Doks</a>"
 
 # Feed
-copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
+copyRight = "Copyright (c) 2020-2021 Norsk helsenett"
 
 # Alert
 alert = false

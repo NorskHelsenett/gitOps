@@ -4,7 +4,7 @@ name: Deploy Hugo site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main", "new-docs"]
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -55,6 +55,9 @@ jobs:
 
       - name: Build production website
         run: npm run build -- --baseURL "https://norskhelsenett.github.io/gitOps/"
+
+      - name: Custom favicon
+        run: cp favicon.ico /public
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
