@@ -20,6 +20,183 @@ spec:
         values: |
           podSecurityStandard: baseline
           failurePolicy: Ignore
+          policyExclude:
+            disallow-capabilities:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-host-namespaces:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-host-path:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-host-ports:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-host-process:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-privileged-containers:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-proc-mount:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            disallow-selinux:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            restrict-apparmor-profiles:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            restrict-seccomp:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
+            restrict-sysctls:
+              any:
+              - resources:
+                  namespaces:
+                  - argocd
+                  - cert-manager
+                  - default
+                  - drone
+                  - gitea
+                  - ingress
+                  - kube-node-lease
+                  - kube-public
+                  - kube-system
+                  - kyverno
+                  - nyan
+                  - vault
       chart: kyverno-policies
     - repoURL: 'https://git.local/gitea/gitOps.git'
       path: cluster/extra/kyverno/policies
