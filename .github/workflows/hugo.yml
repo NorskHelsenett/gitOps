@@ -57,7 +57,7 @@ jobs:
         run: npm run build -- --baseURL "https://norskhelsenett.github.io/gitOps/"
 
       - name: Custom favicon
-        run: cp favicon.ico /public
+        run: cp favicon.ico public/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
