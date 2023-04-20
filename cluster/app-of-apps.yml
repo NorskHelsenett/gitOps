@@ -7,8 +7,8 @@ spec:
     name: ''
     namespace: argocd
     server: 'https://kubernetes.default.svc'
-  sources:
-  - path: cluster/apps/
+  source:
+    path: cluster/apps/
     repoURL: 'https://github.com/NorskHelsenett/gitOps.git'
     targetRevision: main
     directory:
