@@ -19,7 +19,7 @@ Dette er en ressursside for hvordan komme i gang med gitOps, enten du skal ta i 
 
 gitOps er en pull metodikk, der en operator som installert i hvert miljø vil gå mot et git repo for å lytte på endringer. gitOps operatoren vil alltid sørge for at kjøretidsmiljøet er i henhold til spesifikasjonen som ligger på git. Endres git, vil operatoren gjenspeile det i klusteret. Kjent som en leveranse. Hvis noen endrer på ressursene i klusteret, vil gitOps reversere det slik at det igjen er likt det som er definert.
 
-Siden gitOps jobber et pull metodikken, vil det si at det er klusteret som har tilgang på de nødvendige hemmelighetene for å få tilgang til git eller image repo som dockerhub. Dermed kan klusteret være helt hermetisert og isolert, noe som er sikrere enn en tradisjonell push metodikk der en byggelinje f.eks pusher artifaktene til miljøene. I de tilfellene må byggelinjen har de nødvendige tilgangene for å kunne kontakte miljøene.
+Siden gitOps jobber etter pull metodikken, vil det si at det er klusteret som har tilgang på de nødvendige hemmelighetene for å få tilgang til git eller image repo som dockerhub. Dermed kan klusteret være helt hermetisert og isolert, noe som er sikrere enn en tradisjonell push metodikk der en byggelinje f.eks pusher artifaktene til miljøene. I de tilfellene må byggelinjen har de nødvendige tilgangene for å kunne kontakte miljøene.
 
 ## Oppsett
 I dette oppsett inngår følgende portefølje av produkter:
