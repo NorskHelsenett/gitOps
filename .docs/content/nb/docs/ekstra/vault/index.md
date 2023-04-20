@@ -46,11 +46,11 @@ kubectl exec -n vault -it vault-0 -- vault operator unseal $( jq -r '.unseal_key
 ```
 
 ## Tilgang
-Vault er nå låst opp og tilgjengelig på https://vault.local, bruk verdien `root_token` fra `vault-secrets.json` for å logge inn. Root token skal kun benyttes for å starte opp vaultet, hvorpå det bør kastes.
+Vault er nå låst opp og tilgjengelig på [https://vault.local](https://vault.local), bruk verdien `root_token` fra `vault-secrets.json` for å logge inn. Root token skal kun benyttes for å starte opp vaultet, før det bør slettes.
 
-> It is generally considered a best practice not to persist root tokens. Use the root token only for just enough initial setup. Once you enabled an auth method with appropriate policies allowing Vault admins to log in and perform operational tasks, the admins should authenticate with Vault instead of using the root token.
+{{< alert icon="ℹ️" context="danger" text="It is generally considered a best practice not to persist root tokens. Use the root token only for just enough initial setup. Once you enabled an auth method with appropriate policies allowing Vault admins to log in and perform operational tasks, the admins should authenticate with Vault instead of using the root token." />}}
 
-For å lage nytt root_token fra unsea_tokens, [les her](https://developer.hashicorp.com/vault/tutorials/operations/generate-root#generate-root)
+For å lage nytt root_token fra `unseal_tokens`, [les her](https://developer.hashicorp.com/vault/tutorials/operations/generate-root#generate-root)
 
 ![Vault](vault.png)
 
