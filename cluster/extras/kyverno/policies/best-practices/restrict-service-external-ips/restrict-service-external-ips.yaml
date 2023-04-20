@@ -23,6 +23,22 @@ spec:
       - resources:
           kinds:
           - Service
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     validate:
       message: "externalIPs are not allowed."
       pattern:

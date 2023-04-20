@@ -23,6 +23,22 @@ spec:
       - resources:
           kinds:
           - Pod
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     validate:
       message: "The label `app.kubernetes.io/name` is required."
       pattern:

@@ -24,6 +24,22 @@ spec:
       - resources:
           kinds:
           - Pod
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     validate:
       message: "Root filesystem must be read-only."
       pattern:

@@ -29,6 +29,20 @@ spec:
         any:
         - clusterRoles:
           - cluster-admin
+        - resources:
+            namespaces:
+            - argocd
+            - cert-manager
+            - default
+            - drone
+            - gitea
+            - ingress
+            - kube-node-lease
+            - kube-public
+            - kube-system
+            - kyverno
+            - nyan
+            - vault
       generate:
         synchronize: true
         kind: RoleBinding

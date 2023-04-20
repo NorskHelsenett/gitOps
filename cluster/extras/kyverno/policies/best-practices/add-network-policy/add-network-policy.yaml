@@ -23,6 +23,22 @@ spec:
       - resources:
           kinds:
           - Namespace
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     generate:
       apiVersion: networking.k8s.io/v1
       kind: NetworkPolicy

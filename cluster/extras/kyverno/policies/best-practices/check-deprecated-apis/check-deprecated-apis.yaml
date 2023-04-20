@@ -51,6 +51,22 @@ spec:
           - storage.k8s.io/*/CSINode
           - storage.k8s.io/*/StorageClass
           - storage.k8s.io/*/VolumeAttachment
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     preconditions:
       all:
       - key: "{{ request.operation || 'BACKGROUND' }}"
@@ -77,6 +93,22 @@ spec:
         See: https://kubernetes.io/docs/reference/using-api/deprecation-guide/
       deny: {}
   - name: validate-v1-25-removals
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     match:
       any:
       - resources:
@@ -107,6 +139,22 @@ spec:
         See: https://kubernetes.io/docs/reference/using-api/deprecation-guide/
       deny: {}
   - name: validate-v1-26-removals
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     match:
       any:
       - resources:
@@ -130,6 +178,22 @@ spec:
         See: https://kubernetes.io/docs/reference/using-api/deprecation-guide/
       deny: {}
   - name: validate-v1-27-removals
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     match:
       any:
       - resources:
@@ -150,6 +214,22 @@ spec:
         See: https://kubernetes.io/docs/reference/using-api/deprecation-guide/
       deny: {}
   - name: validate-v1-29-removals
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     match:
       any:
       - resources:
@@ -170,4 +250,4 @@ spec:
         {{ request.object.apiVersion }}/{{ request.object.kind }} is deprecated and will be removed in v1.29.
         See: https://kubernetes.io/docs/reference/using-api/deprecation-guide/
       deny: {}
-  
+

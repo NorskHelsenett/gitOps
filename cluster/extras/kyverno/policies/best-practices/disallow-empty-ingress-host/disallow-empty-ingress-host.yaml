@@ -17,6 +17,22 @@ spec:
   background: false
   rules:
     - name: disallow-empty-ingress-host
+      exclude:
+        any:
+        - resources:
+            namespaces:
+            - argocd
+            - cert-manager
+            - default
+            - drone
+            - gitea
+            - ingress
+            - kube-node-lease
+            - kube-public
+            - kube-system
+            - kyverno
+            - nyan
+            - vault
       match:
         any:
         - resources:

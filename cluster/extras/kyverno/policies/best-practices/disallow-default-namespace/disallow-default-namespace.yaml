@@ -22,6 +22,22 @@ spec:
   background: true
   rules:
   - name: validate-namespace
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     match:
       any:
       - resources:
@@ -33,6 +49,22 @@ spec:
         metadata:
           namespace: "!default"
   - name: validate-podcontroller-namespace
+    exclude:
+      any:
+      - resources:
+          namespaces:
+          - argocd
+          - cert-manager
+          - default
+          - drone
+          - gitea
+          - ingress
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - kyverno
+          - nyan
+          - vault
     match:
       any:
       - resources:
