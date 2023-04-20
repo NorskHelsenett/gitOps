@@ -23,10 +23,32 @@ I vårt eksempel skal vi bruke kyverno for å sikre at klusteret kun kjøre sign
 
 Ler mer om dette regelsettet: [Best Practices](https://github.com/kyverno/policies/best-practices)
 
+Følgende namespaces er ekskludert for dette repoet for enkelthets skyld, slik at det lettere å fokusere på de namespace som man faktisk jobber med:
+- argocd
+- cert-manager
+- default
+- drone
+- gitea
+- ingress
+- kube-node-lease
+- kube-public
+- kube-system
+- kyverno
+- nyan
+- vault
+
 ## Rapportering
 ```shell
 kubectl get policyreport -A
 ```
+Gir følgende resultat
+```shell
+NAMESPACE   NAME                               PASS   FAIL   WARN   ERROR   SKIP   AGE
+nyan        cpol-disallow-empty-ingress-host   1      0      0      0       0      41m
+nyan        cpol-restrict-external-ips         1      0      0      0       0      54m
+nyan        cpol-check-deprecated-apis         0      0      0      0       1      54m
+```
+
 ```shell
 kubectl get clusterpolicyreport
 ```
