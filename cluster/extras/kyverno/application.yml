@@ -15,6 +15,9 @@ spec:
     repoURL: https://kyverno.github.io/kyverno/
     targetRevision: '2.7.*'
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
-    - CreateNamespace=true
-    - Replace=true
+      - CreateNamespace=true
+      - Replace=true
