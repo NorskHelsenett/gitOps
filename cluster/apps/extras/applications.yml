@@ -9,12 +9,13 @@ spec:
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
-  source:
-    path: cluster/extras
-    repoURL: 'https://git.local/gitea/gitOps.git'
-    targetRevision: main
-    directory:
-      recurse: true
+  sources:
+    - path: cluster/extras/vault
+      repoURL: 'https://git.local/gitea/gitOps.git'
+      targetRevision: main
+    - path: cluster/extras/kyverno
+      repoURL: 'https://git.local/gitea/gitOps.git'
+      targetRevision: main
   project: default
   syncPolicy:
     syncOptions:

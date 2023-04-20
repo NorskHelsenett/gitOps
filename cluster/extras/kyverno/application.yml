@@ -19,7 +19,13 @@ spec:
       helm:
         values: |
           podSecurityStandard: baseline
+          failurePolicy: Ignore
       chart: kyverno-policies
+    - repoURL: 'https://git.local/gitea/gitOps.git'
+      path: cluster/extra/kyverno/policies
+      targetRevision: main
+      directory:
+        recurse: true
   syncPolicy:
     automated:
       prune: true
