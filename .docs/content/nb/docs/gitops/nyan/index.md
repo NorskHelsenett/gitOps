@@ -35,5 +35,3 @@ Gå tilbake til ArgoCD og synkroniser applikasjonen,
 ```shell
 microk8s ctr images pull git.local/gitea/nyancat:latest
 ```
-
-{{< alert text="Sideloading ferdig." />}}

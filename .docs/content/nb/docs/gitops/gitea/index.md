@@ -42,9 +42,7 @@ https://github.com/NorskHelsenett/gitOps.git
 
 ![gitea-migrate-import-window](gitea-migrate-import-window.png)
 
-### Lag OAuth2 applikasjon i Gitea
-
-![oauth settings](oauth.png)
+## OAuth2 i Gitea
 
 Lag en OAuth2 applikasjon med følgende innstillinger:
 ```bash
@@ -52,14 +50,24 @@ Application Name: DroneCI
 Callback URI: https://drone.local/login
 ```
 
-Kopier `Client ID` og `Client Secret` og bruk de som override i ArgoCD for DroneCI etter installasjon i steget under.
+![oauth settings](oauth.png)
+
+
+
+Kopier `Client ID` og `Client Secret` og commit de til `cluster/project/drone/drone-secrets.yml`.
 ![Enable OAUTH](gitea-drone-oauth2.png)
 
-![Input DroneCI - gitea client-id and Client-Secret](argocd-drone-secret.png)
+Lagre disse verdiene fra Gitea til `cluster/project/drone/drone-secrets.yml` ved en commit.
+![Commit drone secret to gitea](gitea-drone-secret-commit.png)
 
-# DroneCI
+Trykk på **REFRESH** i ArgoCD og hemmeligheten vil automatisk oppdateres
+![synchronise changes in argocd](drone-secret-argocd.png)
 
-## Overskriv parametere
+**RESTART** DroneCI Deploymentet etter at hemmeligheten er synkroniser, for at DroneCI skal ta det i bruk.
+![Restart drone deployment](drone-restart.png)
+
+## DroneCI
+### Installasjon
 Gå til [Drone.local](https://drone.local) for å logge inn.
 
 ![Velkommen](drone-welcome.png)
@@ -74,15 +82,20 @@ Når du nå synkroniserer prosjektet vil ArgoCD installere DroneCI server og run
 
 *Hvis det fortsatt er tomt, sørg for at `Active Only` ikke skrudd på*.
 
-Aktiver repoet, og legg inn i disse to hemmelighetene:
+### Hemmeligheter
+Aktiver repoet, og legg inn i disse to hemmelighetene
+
+`Settings > Organization (Secrets)`
 
 Variabel | Verdi
 ---|--:
 registry_username | gitea
 registry_password | gitops
 
-![Drone Secret](drone-secret.png)
+![Drone Secret](drone-org-secret.png)
 
 Nå er det klart for å starte et nytt bygg.
 
 ![Drone Dashboard](drone-dashboard.png)
+
+{{< alert icon="👨‍💻" context="info" text="På grunn av automatisert CI/CD så risikerer man en uendelig commit loop mellom gitea og drone! En commit til gitea vil trigge et bygg i drone, som så vil pushe en git commit tilbake til gitea 👉👈" />}}

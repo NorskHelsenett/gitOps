@@ -49,3 +49,6 @@ steps:
       from_secret: registry_password
   depends_on:
     - publish
+  when:
+    event:
+    - pull_request

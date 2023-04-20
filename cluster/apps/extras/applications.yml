@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: extras
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: extras
+spec:
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: cluster/extras
+    repoURL: 'https://git.local/gitea/gitOps.git'
+    targetRevision: main
+    directory:
+      recurse: true
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
