@@ -3,8 +3,8 @@
 ## Homepage
 title = "Norsk helsenett"
 titleSeparator = "-"
-titleAddition = "Kom i gang med gitOps"
-description = "Kom i gang med gitOps og lær hvordan du kan sette opp ditt eget kluster for utvikling, hjemmelabb etc med fokus på produksjonskvalitet."
+titleAddition = "Kom i gang med gitOps & kubernetes"
+description = "Kom i gang med gitOps og lær hvordan du kan sette opp ditt eget kluster med alt du trenger for å starte med utvikling eller hjemmelabb."
 
 ## Documentation
 # docsVersion = "0.3"
