@@ -32,7 +32,7 @@ spec:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             readOnlyRootFilesystem: true
-          image: "git.local/gitea/nyancat:2114bab"
+          image: "git.local/gitea/nyancat:latest"
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - mountPath: /tmp
