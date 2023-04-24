@@ -10,7 +10,7 @@ menu:
   docs:
     parent: ""
     identifier: "kyverno-26d49d616d1178254ad443073584be7a"
-weight: 999
+weight: 800
 toc: true
 ---
 

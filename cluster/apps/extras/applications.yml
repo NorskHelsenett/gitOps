@@ -16,6 +16,9 @@ spec:
     - path: cluster/extras/kyverno
       repoURL: 'https://git.local/gitea/gitOps.git'
       targetRevision: main
+    - path: cluster/extras/local-dev
+      repoURL: 'https://git.local/gitea/gitOps.git'
+      targetRevision: main
   project: default
   syncPolicy:
     syncOptions:
