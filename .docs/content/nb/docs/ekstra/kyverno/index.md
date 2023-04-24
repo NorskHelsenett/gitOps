@@ -34,7 +34,7 @@ Følgende namespaces er ekskludert for dette repoet for enkelthets skyld, slik a
 - kube-public
 - kube-system
 - kyverno
-- nyan
+
 - vault
 
 ## Rapportering

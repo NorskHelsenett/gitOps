@@ -35,7 +35,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-host-namespaces:
               any:
@@ -51,7 +50,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-host-path:
               any:
@@ -67,7 +65,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-host-ports:
               any:
@@ -83,7 +80,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-host-process:
               any:
@@ -99,7 +95,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-privileged-containers:
               any:
@@ -115,7 +110,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-proc-mount:
               any:
@@ -131,7 +125,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             disallow-selinux:
               any:
@@ -147,7 +140,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             restrict-apparmor-profiles:
               any:
@@ -163,7 +155,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             restrict-seccomp:
               any:
@@ -179,7 +170,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
             restrict-sysctls:
               any:
@@ -195,7 +185,6 @@ spec:
                   - kube-public
                   - kube-system
                   - kyverno
-                  - nyan
                   - vault
       chart: kyverno-policies
     - repoURL: 'https://git.local/gitea/gitOps.git'

@@ -35,7 +35,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     generate:
       apiVersion: v1
@@ -70,7 +69,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     generate:
       apiVersion: v1

@@ -39,7 +39,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     validate:
       message: "CPU and memory resource requests and limits are required."

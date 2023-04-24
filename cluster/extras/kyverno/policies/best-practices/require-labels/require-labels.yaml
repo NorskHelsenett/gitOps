@@ -37,7 +37,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     validate:
       message: "The label `app.kubernetes.io/name` is required."

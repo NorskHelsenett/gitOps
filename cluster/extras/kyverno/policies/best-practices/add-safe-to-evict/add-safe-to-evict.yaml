@@ -33,7 +33,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     mutate:
       patchStrategicMerge:
@@ -63,7 +62,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     mutate:
       patchStrategicMerge:

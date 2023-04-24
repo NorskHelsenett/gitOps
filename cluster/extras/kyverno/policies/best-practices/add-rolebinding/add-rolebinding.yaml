@@ -41,7 +41,6 @@ spec:
             - kube-public
             - kube-system
             - kyverno
-            - nyan
             - vault
       generate:
         synchronize: true

@@ -40,7 +40,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     validate:
       message: "Liveness, readiness, or startup probes are required for all containers."

@@ -38,7 +38,6 @@ spec:
             - kube-public
             - kube-system
             - kyverno
-            - nyan
             - vault
       preconditions:
         all:

@@ -36,7 +36,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     match:
       any:
@@ -63,7 +62,6 @@ spec:
           - kube-public
           - kube-system
           - kyverno
-          - nyan
           - vault
     match:
       any:
