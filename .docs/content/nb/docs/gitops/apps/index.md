@@ -14,7 +14,6 @@ weight: 400
 toc: true
 ---
 
-
 Siden vi jobber med gitOps skal vi nå gå mot et ekte git repo som grunnlag for hva ArgoCD skal gjøre fremover.
 
 Installer `app-of-apps` i klusteret
@@ -28,20 +27,21 @@ kubectl get apps -n argocd
 
 NAME          SYNC STATUS   HEALTH STATUS
 app-of-apps    Synced        Healthy
-tooling        Synced        Healthy
 argocd-sso     Synced        Healthy
-drone-runner   Synced        Healthy
-drone          Synced        Healthy
-nyan           OutOfSync     Missing
+drone          Synced        OutOfSync
+drone-runner   Synced        OutOfSync
 gitea          Synced        Healthy
+nyan           OutOfSync     Missing
+tooling        Synced        Healthy
 ```
 
+Når `app-of-apps`, `gitea` og `tooling` viser `Healthy` har vi de viktigste komponentene installert. 
 
 ## Aksessere ArgoCD
 
 Før du kan gå til ArgoCD nettsiden må du installere root sertifikatet som lages av `app-of-apps`.
 
-Dette gjør du ved å følge stegene på [Sertifikater](../sertifikater)
+Dette gjør du ved å følge stegene på [Sertifikater](../sertifikater), og kom tilbake hit etter at det er gjort.
 
 1. Installer root sertifikatet på egen maskin
 2. Legg til `ip` og `hostname` i `hosts` filen på egen maskin

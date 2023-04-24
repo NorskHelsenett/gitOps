@@ -36,6 +36,14 @@ sudo update-ca-certificates
 curl -L argocd.local
 ```
 
+#### Restarte microk8s
+
+For at disse endringene skal traversere til microk8s, må vi restarte klusteret:
+
+```shell
+microk8s stop && microk8s start
+```
+
 ## Importere CA sertifikatet inn i podene
 
 For at gitea og droneci skal kunne kommunisere over en sikker TLS forbindelse, må man legge inn `issuer.crt` filen i hver eneste pod. Dette skal vi gjøre ved hjelp av en configmap, og er et stykke manuelt arbeid.

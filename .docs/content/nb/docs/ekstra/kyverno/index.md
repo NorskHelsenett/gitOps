@@ -18,6 +18,13 @@ Kyverno brukes for å sikre at ressurser i klusteret er i henhold til en profil 
 
 I vårt eksempel skal vi bruke kyverno for å sikre at klusteret kun kjøre signerte ressurser i de `namespace` som vi definerer.
 
+## Installasjon
+Gå til ArgoCD extras applikasjonen og velg Kyverno, trykk på synkroniser. Trykk så på ikonet for lenken til kyverno applikasjonen. Du vil nå komme til Kyverno applikasjonen og kan starte synkronisering av kyverno og policies.
+
+Merk følgende:
+- Du må ha installert Gitea og migrert repoet fra github
+- Sørg for å kjøre med `replace` da dette kreves under installasjon av Kyverno ved bruk av ArgoCD
+
 ## Best Practises
 {{< alert icon="ℹ️" text="Kyverno tilbyr en best-practices profil som kan installeres. På den måten for du en tidlig starthjelp på en sikker utforming av dine tjenester som skal kjøre i et kluster. Dette repoet inneholder et utvalgt sett av dette regelsettet." />}}
 
