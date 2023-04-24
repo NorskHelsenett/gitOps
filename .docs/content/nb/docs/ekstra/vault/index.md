@@ -1,5 +1,5 @@
 ---
-title: "HashiCorp Vault"
+title: "🏛️ HashiCorp Vault"
 description: ""
 lead: ""
 date: 2022-01-25T14:41:39+01:00
