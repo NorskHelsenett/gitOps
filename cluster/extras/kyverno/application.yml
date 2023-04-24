@@ -199,7 +199,7 @@ spec:
                   - vault
       chart: kyverno-policies
     - repoURL: 'https://git.local/gitea/gitOps.git'
-      path: cluster/extra/kyverno/policies
+      path: cluster/extras/kyverno/policies
       targetRevision: main
       directory:
         recurse: true
