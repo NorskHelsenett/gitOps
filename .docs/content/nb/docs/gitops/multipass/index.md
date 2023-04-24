@@ -37,13 +37,19 @@ multipass shell microk8s-vm
 ### Linux
 
 ```shell
+# installer microk8s
 sudo snap install microk8s --classic --channel=1.27/stable
 
+# legg bruker til microk8s gruppen
 sudo usermod -a -G microk8s $USER
 mkdir ~/.kube
 sudo chown -f -R $USER ~/.kube
 newgrp microk8s
 
+# Test at det fungerer
+microk8s status
+
+# Installer addons
 microk8s enable ingress dns cert-manager hostpath-storage host-access
 ```
 
@@ -73,6 +79,8 @@ wsl --shutdown
 wsl
 ```
 4. Følg veiledning for [Linux](#linux)
+
+{{< alert icon="🪟" context="info" text="På windows så finner du hosts filen på følgende filsti, c:\Windows\System32\drivers\etc\hosts" />}}
 
 ### hosts
 
