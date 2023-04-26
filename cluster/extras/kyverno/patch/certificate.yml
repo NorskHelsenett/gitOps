@@ -1,0 +1,39 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    argocd.argoproj.io/instance: kyverno
+  name: self-signed
+  namespace: kyverno
+spec:
+  commonName: svc.cluster.local
+  dnsNames:
+  - kyverno.local
+  duration: 45000h0m0s
+  isCA: false
+  issuerRef:
+    kind: ClusterIssuer
+    name: self-signed
+  privateKey:
+    rotationPolicy: Always
+    size: 4096
+  secretName: kyverno-tls-secret
+  subject:
+    countries:
+    - "NO"
+    localities:
+    - Trondheim
+    organizationalUnits:
+    - NHN
+    organizations:
+    - Norsk helsenett
+  usages:
+  - cert sign
+  - client auth
+  - code signing
+  - crl sign
+  - data encipherment
+  - digital signature
+  - key encipherment
+  - server auth
+  - signing

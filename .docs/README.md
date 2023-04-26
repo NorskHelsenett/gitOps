@@ -31,6 +31,10 @@
   </a>
 </p>
 
+```shell
+npm run create docs/ekstra/local-dev/index.md
+```
+
 ![Doks — Modern Documentation Theme](https://raw.githubusercontent.com/h-enk/doks/master/images/doks.png)
 
 ## Demo

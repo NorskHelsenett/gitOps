@@ -61,3 +61,11 @@ For å signere ved bruk av Vault må vi skru på Transit engine, dette gjøres v
 ```shell
 kubectl exec -n vault -it vault-0 -- sh -c "VAULT_TOKEN=$VAULT_TOKEN vault secrets enable transit"
 ```
+
+## Smarte kommandoer
+
+Alias for å imitere vault lokalt installert
+```shell
+alias vault="kubectl exec -n vault -it vault-0 -- sh -c \"VAULT_TOKEN=$VAULT_TOKEN vault status\""
+alias vault="kubectl exec -it vault-0 -n vault -- env VAULT_TOKEN=$VAULT_TOKEN vault"
+```

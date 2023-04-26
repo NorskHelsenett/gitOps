@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyverno
+  namespace: kyverno
+spec:
+  template:
+    spec:
+      containers:
+      - name: kyverno
+        volumeMounts:
+        - name: cluster-ca
+          mountPath: /etc/ssl/certs/cluster-ca.crt
+          readOnly: true
+          subPath: ca.crt
+      volumes:
+      - name: cluster-ca
+        secret:
+          secretName: kyverno-tls-secret
