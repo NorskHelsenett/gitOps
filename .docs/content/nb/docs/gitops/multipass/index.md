@@ -147,6 +147,19 @@ alias k=kubectl
 complete -o default -F __start_kubectl k
 ```
 
+#### Smarte kubernetes kommandoer
+
+Liste ut alle oversikter over ressurser i et kluster
+
+```shell
+kubectl api-resources
+```
+
+List ut spesifikasjonen for ressurser i klusteret
+```shell
+kubectl explain application.spec
+```
+
 ### jq
 Installere jq
 ```shell

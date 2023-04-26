@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-development
+  namespace: argocd
+spec:
+  destination:
+    namespace: local-dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: cluster/extras/local-dev/services
+    repoURL: https://git.local/gitea/gitOps.git
+    targetRevision: HEAD

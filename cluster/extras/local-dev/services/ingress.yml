@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: local-dev-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: self-signed
+  labels:
+    app.kubernetes.io/name: local-dev
+spec:
+  tls:
+    - hosts:
+        - "dev.local"
+      secretName: dev-secret
+  rules:
+    - host: "dev.local"
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: local-service
+                port:
+                  number: 80
