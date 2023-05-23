@@ -30,6 +30,8 @@ Produktet vi skal vise frem heter [Cosign fra Sigstore](https://docs.sigstore.de
 ## Installasjon
 Oppdatert guide er alltid tilgjengelig på [Cosign Installation](https://docs.sigstore.dev/cosign/installation/)
 
+Etter installasjonen logger du inn i registeret [her](#login-register)
+
 ### GO
 ```shell
 go install github.com/sigstore/cosign/v2/cmd/cosign@latest
@@ -338,6 +340,13 @@ kubectl run curl-pod --rm -it --image=curlimages/curl -n nyan -- sh
 Signer så `curlimages/curl` og prøv å kjøre samme kommando på nytt.
 
 ## Annet
+
+### Login register
+
+For å kunne pushe til registeret må man først logge inn, det kan gjøres med denne kommandoen
+```shell
+cosign login git.local -u gitea -p gitops
+```
 
 ### Environment variabler
 ```shell
