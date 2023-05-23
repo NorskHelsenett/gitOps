@@ -98,7 +98,7 @@ cat << EOF | sudo tee -a /etc/hosts
 EOF
 ```
 
-## Kommandoer du bør vite om
+## TIPS
 
 ### Microk8s
 
@@ -110,7 +110,7 @@ microk8s status
 #### Config
 Konfigfilen kan eksponeres til fil på følgende måte, slik at man kan bruke egen kubectl, eller andre verktøy som [k9s](https://k9scli.io/).
 ```shell
-microk8s config > .kube/config
+microk8s config > ~/.kube/config
 ```
 
 ### Kubectl
@@ -159,6 +159,20 @@ List ut spesifikasjonen for ressurser i klusteret
 ```shell
 kubectl explain application.spec
 ```
+
+### k9s
+
+[k9s](https://k9scli.io) er et visuelt CLI verktøy for å lett få en oversikt over ressurser i klusteret, blant annet loggin, shell, metrikler osv.
+
+```shell
+ARCH=$(dpkg --print-architecture)
+wget https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_$ARCH.tar.gz
+tar xvf k9s_Linux_$ARCH.tar.gz
+sudo mv k9s /usr/local/bin/k9s
+rm README.md LICENSE k9s_Linux_$ARCH.tar.gz
+```
+
+Husk å hente ut kubernetes config for at k9s skal fungere, [her er veiledning](#config)
 
 ### jq
 Installere jq
