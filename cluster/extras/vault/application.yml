@@ -31,6 +31,15 @@ spec:
             - hosts:
               - vault.local
               secretName: tls-secret
+          volumes:
+            - secret:
+                secretName: tls-secret
+              name: domain-ca
+          volumeMounts:
+            - mountPath: /etc/ssl/certs/ca.crt
+              name: domain-ca
+              readOnly: true
+              subPath: ca.crt
     repoURL: https://helm.releases.hashicorp.com
     targetRevision: 0.23.0
   syncPolicy:
