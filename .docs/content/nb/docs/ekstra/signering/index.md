@@ -25,7 +25,7 @@ Ved å signere kan man sikre at det som blir levert, er det som er tiltenkt leve
 **Krav:**
 Ved å sette krav til signering kan man også stenge for at uønskede aktører kan kjøre opp tjenester som ikke er signert.
 
-Produktet vi skal vise frem heter [Cosign fra Sigstore](https://docs.sigstore.dev/) og det er en enkel måte å signere images, artifakter, BOM osv...
+[Cosign fra Sigstore](https://docs.sigstore.dev/) brukes for signering av images på en enkel måte. I tillegg kan Cosign signere andre typer som filer, artifakter, BOM osv...
 
 ## Installasjon
 Oppdatert guide er alltid tilgjengelig på [Cosign Installation](https://docs.sigstore.dev/cosign/installation/)
@@ -268,12 +268,61 @@ spec:
                 -----END PUBLIC KEY-----
 ```
 
+### KMS
+KMS som HashiCorp Vault kan verifiseres ved følgende
+```yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-image
+  namespace: kyverno
+spec:
+  background: true
+  rules:
+  - match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+          namespaces:
+          - nyan
+    name: verify-signature
+    verifyImages:
+    - attestors:
+      - entries:
+        - keys:
+            publicKeys: "hashivault://transit"
+      imageReferences:
+       - '*'
+      mutateDigest: true
+      repository: git.local/gitea/signatures
+      required: true
+      verifyDigest: true
+  validationFailureAction: Enforce
+```
+Dette krever følgende miljøvariabler i kyverno deploymentet, som enten kan patches eller legges til values filen:
+```yaml
+envVars:
+  - name: "VAULT_ADDR"
+    value: "https://vault.local"
+  - name: "VAULT_TOKEN"
+    valueFrom:
+      secretKeyRef:
+        name: vault-secret
+        key: token
+```
+
+Og da følgende hemmelighet:
+```bash
+kubectl create secret generic -n kyverno vault-secret --from-literal=token=$(cat vault-secrets.json | jq -r .root_token)
+```
+
 ### Sertifikater
 ```yaml
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: check-image-demo
+  name: check-image
 spec:
   background: true
   rules:
@@ -353,4 +402,5 @@ cosign login git.local -u gitea -p gitops
 SIGSTORE_ROOT_FILE=./CA.crts
 COSIGN_REPOSITORY=git.local/gitea/signatures
 ```
+
 - `COSIGN_REPOSITORY`: hvis man ønsker et eget repo for signaturene, f.eks hvis man ikke har skrivetilgang til container registerets om er et tilfelle om man ønsker å signere et image fra en tredje part.
