@@ -6,6 +6,12 @@ on:
     paths-ignore:
       - "*.md"
       - "*.key"
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+  
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -25,13 +31,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: downcase REPO
-        run: |
-          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
-          printenv REPO
-      - name: Generate Docker image tag with short sha
-        id: dockertag
-        run: echo "img_tag=ghcr.io/${{ github.repository}}:$(git rev-parse --short HEAD)" >> ${GITHUB_OUTPUT}
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Build and push
         id: build-push
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671 # ratchet:docker/build-push-action@v4
@@ -41,6 +45,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           pull: true
           push: false
-          tags: ${{ steps.dockertag.outputs.img_tag }}
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
