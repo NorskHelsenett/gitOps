@@ -25,9 +25,12 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: downcase REPO
+        run: |
+          echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
       - name: Generate Docker image tag with short sha
         id: dockertag
-        run: echo "img_tag=ghcr.io/${{ github.repository,,}}:$(git rev-parse --short HEAD)" >> ${GITHUB_OUTPUT}
+        run: echo "img_tag=ghcr.io/${{ github.repository}}/gitOps:$(git rev-parse --short HEAD)" >> ${GITHUB_OUTPUT}
       - name: Build and push
         id: build-push
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671 # ratchet:docker/build-push-action@v4
