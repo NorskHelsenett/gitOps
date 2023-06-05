@@ -47,7 +47,9 @@ jobs:
           platforms: linux/amd64,linux/arm64
           pull: true
           push: true
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            ${{ steps.meta.outputs.labels }}
+            org.opencontainers.image.description "Container image to run nyancat - signed with cosign"
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
