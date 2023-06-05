@@ -1,0 +1,42 @@
+name: Build and push to GitHub OCI registry
+on:
+  push:
+    branches:
+      - cosign-oidc-workflow
+    paths-ignore:
+      - "*.md"
+      - "*.key"
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # ratchet:actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@e81a89b1732b9c48d79cd809d8d81d79c4647a18 # ratchet:docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@f03ac48505955848960e80bbb68046aa35c7b9e7 # ratchet:docker/setup-buildx-action@v2
+      - name: Login to container registry
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # ratchet:docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Docker image tag with short sha
+        id: dockertag
+        run: echo "img_tag=ghcr.io/${{ github.repository }}:$(git rev-parse --short HEAD)" >> ${GITHUB_OUTPUT}
+      - name: Build and push
+        id: build-push
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671 # ratchet:docker/build-push-action@v4
+        with:
+          context: src/.
+          file: src/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          pull: true
+          push: false
+          tags: ${{ steps.dockertag.outputs.img_tag }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
