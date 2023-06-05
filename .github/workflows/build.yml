@@ -47,12 +47,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           pull: true
           push: true
-          labels: |
-            ${{ steps.meta.outputs.labels }}
-            org.opencontainers.image.description "Container image to run nyancat - signed with cosign"
+          labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Multi Arch image to run nyancat - the next thing in web0180
       - name: Install cosign
         uses: sigstore/cosign-installer@204a51a57a74d190b284a0ce69b44bc37201f343 # ratchet:sigstore/cosign-installer@main
         with:
