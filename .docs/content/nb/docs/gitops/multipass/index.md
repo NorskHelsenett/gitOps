@@ -15,7 +15,7 @@ toc: true
 type: docs
 ---
 
-For å kunne starte, må du ha tilgang til et kubernetes kluster. Et av de enklere verktøy for å få til dette er multipass som oppretter en VM der man installerer microk8s. Det finnes mange gode alternativer som er mye mer lettvektere, men dette er valgt fordi multipass kan brukes til andre formål, og microk8s er et godt alternativ for å kjøre kubernetes på low-end maskinvare som Raspberry Pi.
+For å kunne starte, må du ha tilgang til et kubernetes kluster. Et av de enklere verktøy for å få til dette er multipass som oppretter en VM der man installerer microk8s. Det finnes mange gode alternativer som er mye mer lettvektere, men dette er valgt fordi multipass kan brukes til andre formål, og microk8s er et godt alternativ for å kjøre kubernetes på low-end IoT enheter som Raspberry Pi.
 
 For å installere multipass følg den offisielle installasjons guiden på [installasjons guide](https://multipass.run/install)
 
@@ -28,12 +28,14 @@ For å installere multipass følg den offisielle installasjons guiden på [insta
 - [k0s](https://k0sproject.io) minimalt kubernetes system som er enkelt å installere og provsjonere.
 
 ## Provisjon ny virtuell maskin med Multipass
+
 ```shell
 multipass launch --name microk8s-vm --memory 8G --disk 40G --cpu 4
 multipass shell microk8s-vm
 ```
 
 ## Installer microk8s
+
 ### Linux
 
 ```shell
@@ -62,22 +64,29 @@ microk8s enable ingress dns cert-manager hostpath-storage host-access
 {{< alert icon="🚨" context="warning" text="Ikke bruk host-access i vanlige klustre uten å ha gjort en skikkelig vurdering! Det gjøres kun her for å forenkle DNS oppslag mot interne ressurser som https://git.local" />}}
 
 ### Windows
+
 For å få microk8s til å fungere på Windows ved å bruke WSL må man aktivere versjon 2 av WSL og skru på `systemd`.
 
 1. Oppdaterer WSL til å kjøre på versjon 2
+
 ```powershell
 wsl --update
 wsl --set-default-version 2
 ```
+
 2. Etter installering av ubuntu, logg inn i WSL og aktiver `systemd`
+
 ```shell
 echo -e "[boot]\nsystemd=true" | sudo tee /etc/wsl.conf
 ```
+
 3. Logg ut av ubuntu og restart WSL fra powershell
+
 ```powershell
 wsl --shutdown
 wsl
 ```
+
 4. Følg veiledning for [Linux](#linux)
 
 {{< alert icon="🪟" context="info" text="På windows så finner du hosts filen på følgende filsti, c:\Windows\System32\drivers\etc\hosts" />}}
@@ -87,6 +96,7 @@ wsl
 Kjør følgende kommando og legg resultatet i `hosts` filen på egen maskin og multipass. På MacOSX og Linux er den rette plasseringen `/etc/hosts`.
 
 **Det er viktig at du gjør dette på multipass VM instansen din. Og dessverre vil denne filen resettes etter hver restart av maskinen**
+
 ```shell
 IP=$(hostname -I | awk '{print $1}' )
 cat << EOF | sudo tee -a /etc/hosts
@@ -103,12 +113,15 @@ EOF
 ### Microk8s
 
 #### Status
+
 ```shell
 microk8s status
 ```
 
 #### Config
+
 Konfigfilen kan eksponeres til fil på følgende måte, slik at man kan bruke egen kubectl, eller andre verktøy som [k9s](https://k9scli.io/).
+
 ```shell
 microk8s config > ~/.kube/config
 ```
@@ -116,12 +129,16 @@ microk8s config > ~/.kube/config
 ### Kubectl
 
 #### Alias
+
 Alias for enklere kommandoer
+
 ```shell
 alias kubectl="microk8s kubectl"
 alias k=kubectl
 ```
+
 For å persistere kommandoene over, må de legges inn i .-rc fil som `.bashrc` eller `.zshrc`.
+
 ```shell
 cat << EOF >> ~/.bashrc
   alias kubectl="microk8s kubectl"
@@ -129,14 +146,18 @@ cat << EOF >> ~/.bashrc
 EOF
 source ~/.bashrc
 ```
+
 #### Interaksjon med klusteret
+
 Sjekk noder og pod tilstander
+
 ```shell
 kubectl get nodes
 kubectl get pods -A
 ```
 
 #### Completion
+
 Auto completion gir deg automatisk utfylling ved bruk av [tab] slik at det er enkelt å gjøre handlinger mot klusteret. [Ler mer](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 
 ```shell
@@ -156,6 +177,7 @@ kubectl api-resources
 ```
 
 List ut spesifikasjonen for ressurser i klusteret
+
 ```shell
 kubectl explain application.spec
 ```
@@ -175,24 +197,35 @@ rm README.md LICENSE k9s_Linux_$ARCH.tar.gz
 Husk å hente ut kubernetes config for at k9s skal fungere, [her er veiledning](#config)
 
 ### jq
+
 Installere jq
+
 ```shell
 sudo apt install jq -y
 ```
+
 ### Multipass
 
 #### Shell
+
 Opprett shell til VM
+
 ```shell
 multipass shell microk8s-vm
 ```
+
 #### Stopping
+
 Stopp VM
+
 ```shell
 multipass stop microk8s-vm
 ```
+
 #### Sletting
+
 Slett VM og rydd opp
+
 ```shell
 multipass delete microk8s-vm
 multipass purge
