@@ -105,6 +105,7 @@ cat << EOF | sudo tee -a /etc/hosts
   $IP nyan.local
   $IP argocd.local
   $IP vault.local
+  $IP ctf.local
 EOF
 ```
 

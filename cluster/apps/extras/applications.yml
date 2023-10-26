@@ -19,6 +19,9 @@ spec:
     - path: cluster/extras/local-dev
       repoURL: 'https://git.local/gitea/gitOps.git'
       targetRevision: main
+    - path: cluster/extras/multi-juicer
+      repoURL: 'https://git.local/gitea/gitOps.git'
+      targetRevision: main
   project: default
   syncPolicy:
     syncOptions:
