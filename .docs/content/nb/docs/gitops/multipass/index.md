@@ -30,7 +30,7 @@ For å installere multipass følg den offisielle installasjons guiden på [insta
 ## Provisjon ny virtuell maskin med Multipass
 
 ```shell
-multipass launch --name microk8s-vm --memory 8G --disk 40G --cpu 4
+multipass launch --name microk8s-vm --memory 8G --disk 40G --cpus 4
 multipass shell microk8s-vm
 ```
 
